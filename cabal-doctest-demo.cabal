@@ -1,0 +1,43 @@
+cabal-version:      3.6
+name:               cabal-doctest-demo
+version:            0.1.0.0
+synopsis:
+
+-- A longer description of the package.
+-- description:
+homepage:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+license:            NONE
+author:             Gershom Bazerman
+maintainer:         gershom@arista.com
+
+
+common libdeps
+   build-depends:    base < 6, bytestring, network
+
+
+library
+    import: libdeps
+    exposed-modules:  MyLib, MyDep, MyOtherDep
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+
+test-suite test
+   type: exitcode-stdio-1.0
+   build-tool-depends: docspec-static-demo:docspec-static
+   main-is: Main.hs
+   hs-source-dirs: test
+   build-depends: cabal-doctest-demo, base < 6, tasty, tasty-hunit
+   code-generators: docspec-static
+
+test-suite doctest
+   import: libdeps
+   type: exitcode-stdio-1.0
+   build-tool-depends: doctest-codegen-driver:doctest-codegen-driver
+   main-is: Main.hs
+   hs-source-dirs: test
+   build-depends: cabal-doctest-demo, doctest
+   code-generators: doctest-codegen-driver

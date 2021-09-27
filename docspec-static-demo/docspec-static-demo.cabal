@@ -1,0 +1,17 @@
+cabal-version:      3.6
+name:               docspec-static-demo
+version:            0.1.0.0
+
+synopsis:           A demo doctest generator that can be used from the code-generators clause of a test stanza to create a tasty suite.
+
+license:            GPL-2.0-or-later
+author:             Gershom Bazerman
+maintainer:         gershomb@gmail.com
+
+executable docspec-static
+    main-is:          Main.hs
+    other-modules:    CabalDocspec.Lexer
+
+    build-depends:    base < 5, haskell-lexer >= 1.1, Cabal >= 3.2, parsec >= 3.1, deepseq >= 1.4, filepath, filepattern, directory
+    hs-source-dirs:   app
+    default-language: Haskell2010

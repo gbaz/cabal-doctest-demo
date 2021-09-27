@@ -1,0 +1,1 @@
+packages: cabal-doctest-demo.cabal docspec-static-demo/docspec-static-demo.cabal doctest-codegen-driver/doctest-codegen-driver.cabal
